@@ -9,3 +9,4 @@
 
 checkstyle-idea.xml
 libraries/*.xml
+sonarlint/issuestore/**
