@@ -6,8 +6,9 @@ spring:
     password: password
   jpa:
     database: POSTGRESQL
-    properties:
-      hibernate:
-        generate_statistics: false
-        ddl-auto: create
-        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    hibernate:
+      ddl-auto: create
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    generate-ddl: true
