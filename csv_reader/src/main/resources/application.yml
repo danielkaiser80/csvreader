@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/postgres?tcpKeepAlive=true
+    username: user
+    password: password
+  jpa:
+    database: POSTGRESQL
+    properties:
+      hibernate:
+        generate_statistics: false
+        ddl-auto: create
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
