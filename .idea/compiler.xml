@@ -10,9 +10,6 @@
         <module name="csv_reader" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="csv_reader" target="15" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
