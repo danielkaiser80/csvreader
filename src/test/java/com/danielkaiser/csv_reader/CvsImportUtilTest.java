@@ -8,8 +8,10 @@ import com.danielkaiser.csv_reader.repository.LocationRepository;
 
 import lombok.val;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
-public class CvsImportUtilTest {
+class CvsImportUtilTest {
 
     @Autowired
     private LocationRepository locationRepository;
@@ -19,5 +21,8 @@ public class CvsImportUtilTest {
         val locations = CsvImportUtil.loadObjectList(Location.class, "postcode.csv");
         locationRepository.saveAll(locations);
         locationRepository.flush();
+
+        val loadedLocations = locationRepository.findAll();
+        assertThat(loadedLocations).hasSize(22898); // rows in our file
     }
 }
