@@ -16,7 +16,7 @@ public class CvsImportUtilTest {
 
     @Test
     void shouldLoadCsvFile() {
-        final val locations = CsvImportUtil.loadObjectList(Location.class, "postcode.csv");
+        val locations = CsvImportUtil.loadObjectList(Location.class, "postcode.csv");
         locationRepository.saveAll(locations);
         locationRepository.flush();
     }
