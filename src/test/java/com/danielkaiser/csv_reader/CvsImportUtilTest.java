@@ -14,11 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CvsImportUtilTest {
 
     @Autowired
+    private CsvImportService importService;
+
+    @Autowired
     private LocationRepository locationRepository;
 
     @Test
     void shouldLoadCsvFile() {
-        val locations = CsvImportUtil.loadObjectList(Location.class, "postcode.csv");
+        val locations = importService.loadObjectList(Location.class, "postcode.csv");
         locationRepository.saveAll(locations);
         locationRepository.flush();
 

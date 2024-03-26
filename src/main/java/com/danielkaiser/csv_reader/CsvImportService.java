@@ -12,15 +12,15 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-import lombok.experimental.UtilityClass;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Service;
 
 /**
- * Utility class to read CSV files into the application
+ * Service to read CSV files into the application
  */
-@UtilityClass
+@Service
 @Log4j2
-public class CsvImportUtil {
+public class CsvImportService {
 
     public <T> List<T> loadObjectList(Class<T> type, final String fileName) {
         log.debug("Loading file {}", fileName);
