@@ -1,19 +1,18 @@
 package com.danielkaiser.csv_reader;
 
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import org.springframework.core.io.ClassPathResource;
 import com.danielkaiser.csv_reader.util.ReplacingInputStream;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Service to read CSV files into the application
@@ -27,13 +26,13 @@ public class CsvImportService {
 
         // replace the two chars separator ', ' with ',' as otherwise the quotes would still be read and persisted
         try (InputStream inputStream = new ClassPathResource(fileName, type.getClassLoader()).getInputStream();
-                        FilterInputStream filterInputStream = new ReplacingInputStream(inputStream, ", ".getBytes(), ",".getBytes())) {
+             FilterInputStream filterInputStream = new ReplacingInputStream(inputStream, ", ".getBytes(), ",".getBytes())) {
 
             return loadObjectList(type, filterInputStream);
 
         } catch (final IOException e) {
-            log.error(String.format("Error occurred while loading object list from file %s", fileName), e);
-            throw new IllegalStateException("Error occurred while loading object list from file " + fileName, e);
+            log.error(String.format("Error occurred while loading object list from file %s.", fileName), e);
+            throw new IllegalStateException("Error occurred while loading object list from file " + fileName + ".", e);
         }
     }
 
